@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let obj = {
+      //   a: 'hhh',
+      //   b: 'abc',
+      //   c: '',
+      //   set c(newVal) {
+      //     console.log('C的值已被改变', newVal)
+      //     this.b = newVal
+      //   },
+      //   get c() {
+      //     console.log('C的值被访问')
+      //     return this.a
+      //   }
+      // }
+      // console.log(obj.c)
+      // obj.c = 'lyjc'
+      // console.log(obj.c)
+
+      let obj2 = {
+        set: function (newVal) {
+          console.log('obj2有被赋值', newVal)
+        },
+        get: function () {
+          console.log('obj2被访问了')
+          return 'hhh'
+        }
+      }
+      obj2.name = 'lyjc'
+      console.log(obj2)
+      obj2.name = 'kobe'
+    </script>
+  </body>
+</html>

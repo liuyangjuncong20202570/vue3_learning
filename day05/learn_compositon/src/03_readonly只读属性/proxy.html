@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        name: 'lyjc',
+        age: 18,
+        home: 'china'
+      }
+      // 使用proxy代理对象实现监听对象属性变化
+      const p = new Proxy(obj, {
+        // set：设置
+        // set有四个参数：target（代理的原对象）、property（设置新值的键名）、value（设置的新值）、receiver（创建的代理对象。这里指p）
+        set: function (target, property, value) {
+          console.log(
+            `监听到了${property}的属性值发生变化，获取的新值是：${value}`
+          )
+          // 此处的property是一个变量，要访问到相应的原对象数据只能用对象[属性名]的方法，因为原对象中没有用以property为属性名的属性值
+          // 并且对象.属性名后面的属性名是一个字符串，如果是添加属性的话最好用对象[属性名]，如果属性名是一个变量的话对象.属性名的方法会失败
+          target[property] = value
+        },
+        // get捕获器触发一定要调用一次其原先值，才会触发
+        // get:获取
+        // get有三个参数：target（代理的原对象）、property（设置新值的键名）、receiver（创建的代理对象。这里指p）
+        get: function (target, property) {
+          console.log(`监听到了${property}的属性值发生变化`)
+          return target[property]
+        }
+      })
+      // console.log(p.name)
+      // p.name = 'kobe'
+      // console.log(p.name)
+      p.address = 'jaingxi'
+    </script>
+  </body>
+</html>

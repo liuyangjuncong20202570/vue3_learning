@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-bind绑定对象语法：{类名：布尔值}如果为true则绑定该类，否则不绑定 -->
+      <!-- 同样可以绑定多个类 -->
+      <h1 :class="{active:isActive}">哈哈哈</h1>
+      <h1 :class="{ active : isActive , why : true, koby : false}">哈哈哈</h1>
+      <button @click="isActive = !isActive">点击我</button>
+      <!-- v-bind语法可以绑定数组语法 -->
+      <!-- v-bind语法可以绑定数组语法同样可以结合对象语法 -->
+      <button
+        :class="['abs','cba',className,{active:isActive}]"
+        @click="isActive = !isActive"
+      >
+        点击我
+      </button>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'hello Vue3',
+            isActive: false,
+            className: 'aaa'
+          }
+        },
+        methods: {
+          changeMessage() {
+            this.message = 'i am your father'
+          }
+        }
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-bind直接绑定对象会遍历该对象并把对象中的属性一一对应给绑定的元素，用于属性传参（props） -->
+      <h2 :="obj">hahaha</h2>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'hello Vue3',
+            obj: {
+              name: 'lyjc',
+              age: 22,
+              height: 1.88
+            }
+          }
+        },
+        methods: {
+          changeMessage() {
+            this.message = 'i am your father'
+          }
+        }
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
